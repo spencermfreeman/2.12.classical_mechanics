@@ -1,5 +1,5 @@
-#Program to model object freefall under influence of a nonlinear drag coefficient
 import numpy as np
+from prettytable import PrettyTable
 import matplotlib.pyplot as plt
 
 g = 9.8
@@ -17,14 +17,14 @@ def y_freefall(t, y_0, v_y_0):
     return -g/2*(t**2)+v_y_0*t+y_0
 
 #parametric equations when air resistance is introduced
-dt = .001
+dt = .0005
 c_w = 0.8
 A = 0.2
 m = 30
 rho = 1
 alpha = (c_w*rho*A)/(2*m)
 
-x_position = [x_0]
+x_position = [x_0+55.24195160930993-30]
 y_position = [y_0]
 
 x_velocity = [v_x_0]
@@ -49,13 +49,13 @@ def append_next_y(i):
 
 #fill x-velocity list, y-velocity list, x-postion list, and y-position list, respectively
 i=0
-while(i<5000):
+while(i<10000):
     append_next_velocity_x(i)
     append_next_velocity_y(i)
     i+=1
 
 j=0
-while(j<5000):
+while(j<10000):
     if(y_position[j]<0):
         break
     append_next_x(j)
@@ -79,7 +79,7 @@ plt.title("Plot of Trajectories (HW3 - 2.7)")
 plt.legend()
 plt.show()
 
-#print information
-print("____________________________________________________________________________________________________________________________")
-print("Final y-position (drag): ", y_position[j-1], "| Final x-position (drag): ", x_position[j-1], "| Total time (s): ", total_time())
-print("____________________________________________________________________________________________________________________________")
+t = PrettyTable()
+t.field_names = ['Drop Position: ','Final Y-Position (drag): ','Final x-position (drag): ', 'Total time: ']
+t.add_row(['%.3f'%x_position[0], '%.3f'%y_position[j-1], '%.3f'%x_position[j-1], '%.3f'%total_time()])
+print(t)
