@@ -30,7 +30,6 @@ y_position = [y_0]
 x_velocity = [v_x_0]
 y_velocity = [v_y_0]
 
-#takes the current index as an argument, this will be incremented while looping, should begin at 0 and loop until i = 999, 1000 pts
 def append_next_velocity_y(i):
     next_velocity_y = ((-alpha*np.sqrt(x_velocity[i]**2+y_velocity[i]**2))*y_velocity[i]-(g))*dt
     y_velocity.append(next_velocity_y+y_velocity[i])
@@ -66,7 +65,6 @@ def total_time():
     total_time = (len(x_position)-1)*dt
     return total_time
 
-#plot commands
 plt.ylim(0, 80)
 plt.xlim(-250,0)
 plt.xlabel("x-displacement (m)")
