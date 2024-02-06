@@ -8,6 +8,7 @@ x_0 = -209
 y_0 = 80
 v_x_0 = 44.4
 v_y_0 = 0 
+x_shift = 25.24
 
 #parametric equations when rejecting air resistance
 def x_freefall(t, x_0, v_x_0):
@@ -24,7 +25,8 @@ m = 30
 rho = 1
 alpha = (c_w*rho*A)/(2*m)
 
-x_position = [x_0+55.24195160930993-30]
+#add shift to maintiain landing spot
+x_position = [x_0+x_shift]
 y_position = [y_0]
 
 x_velocity = [v_x_0]
@@ -70,7 +72,7 @@ plt.xlim(-250,0)
 plt.xlabel("x-displacement (m)")
 plt.ylabel("y-displacement (m)")
 plt.plot(x_position, y_position, label = "Drag Proportional to v^2")
-plt.plot(x_freefall(t, -209, 44.4), y_freefall(t, 80, 0), label = "Drag Neglected")
+plt.plot(x_freefall(t, x_0, v_x_0), y_freefall(t, y_0, v_y_0), label = "Drag Neglected")
 plt.scatter(-30, 0, label = "Target")
 plt.scatter(0,0, label = "Cattle (0,0)")
 plt.title("Plot of Trajectories (HW3 - 2.7)")
