@@ -9,6 +9,7 @@ y_0 = 80
 v_x_0 = 44.4
 v_y_0 = 0 
 x_shift = 25.24
+max_iterations = 1000
 
 #parametric equations when rejecting air resistance
 def x_freefall(t, x_0, v_x_0):
@@ -50,13 +51,13 @@ def append_next_y(i):
 
 #fill x-velocity list, y-velocity list, x-postion list, and y-position list, respectively
 i=0
-while(i<10000):
+while(i<max_iterations):
     append_next_velocity_x(i)
     append_next_velocity_y(i)
     i+=1
 
 j=0
-while(j<10000):
+while(j<max_iterations):
     if(y_position[j]<0):
         break
     append_next_x(j)
